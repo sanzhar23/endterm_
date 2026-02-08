@@ -1,4 +1,4 @@
-<img width="2060" height="2359" alt="image" src="https://github.com/user-attachments/assets/e7a7f72b-3bec-4815-9892-3d743d871ba5" />This project is a Spring Boot REST API for an online quiz platform. The application allows users to:create quizzes with different difficulty levels (EASY, HARD) ,view all quizzes, get a quiz by id,delete quizzes
+This project is a Spring Boot REST API for an online quiz platform. The application allows users to:create quizzes with different difficulty levels (EASY, HARD) ,view all quizzes, get a quiz by id,delete quizzes
 The project follows a layered architecture:controller layer handles HTTP requests and responses,repository layer works with the database.
 project also demonstrates solid principles
 
