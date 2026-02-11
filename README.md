@@ -20,8 +20,9 @@ POST http://localhost:8080/api/quizzes
 
 
 Delete quiz by ID  Method: DELETE
-DELETE http://localhost:8080/api/quizzes/13
-<img width="1377" height="441" alt="image" src="https://github.com/user-attachments/assets/98562707-7daf-4970-a2bb-0ff4e4afc6e5" />
+DELETE http://localhost:8080/api/quizzes/3/questions/8
+<img width="887" height="568" alt="image" src="https://github.com/user-attachments/assets/c966cc53-c8d7-4670-a41d-583005a02e08" />
+
 
 **C. Design Patterns Section**
 
