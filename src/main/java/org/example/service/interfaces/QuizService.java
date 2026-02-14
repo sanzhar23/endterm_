@@ -1,7 +1,6 @@
 package org.example.service.interfaces;
 
 import org.example.model.Quiz;
-
 import java.util.List;
 
 public interface QuizService {

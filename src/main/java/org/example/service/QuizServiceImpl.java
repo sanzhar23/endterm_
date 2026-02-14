@@ -1,12 +1,12 @@
 package org.example.service;
 
-import org.example.exception.DuplicateResourceException;
 import org.example.exception.ResourceNotFoundException;
 import org.example.model.Quiz;
-import org.example.patterns.QuizFactory;
+import org.example.cache.QuizCache;
 import org.example.repository.QuizRepository;
 import org.example.service.interfaces.QuizService;
 import org.springframework.stereotype.Service;
+
 
 import java.util.List;
 
@@ -21,8 +21,19 @@ public class QuizServiceImpl implements QuizService {
 
     @Override
     public List<Quiz> getAll() {
-        return repo.getAll();
+
+        QuizCache cache = QuizCache.getInstance();
+        List<Quiz> cached = cache.getAllQuizzes();
+        if (cached != null) {
+            System.out.println("Loaded from cache");
+            return cached;
+        }
+        System.out.println("Loaded from database");
+        List<Quiz> quizzes = repo.getAll();
+        cache.putAllQuizzes(quizzes);
+        return quizzes;
     }
+
 
     @Override
     public Quiz getById(int id) {
@@ -33,13 +44,14 @@ public class QuizServiceImpl implements QuizService {
 
     @Override
     public Quiz create(String name, String level) {
-        Quiz q = QuizFactory.create(name, level);
-        q.validate();
-        return repo.create(q.getName(), q.getLevel());
+        Quiz created = repo.create(name, level);
+        QuizCache.getInstance().clear();
+        return created;
     }
 
     @Override
     public void delete(int id) {
         repo.delete(id);
+        QuizCache.getInstance().clear();
     }
 }
