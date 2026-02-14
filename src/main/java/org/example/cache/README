@@ -1,0 +1,24 @@
+In this project, I implemented an additional bonus feature an in memory cache system for quizzes
+I created a QuizCache class that stores quiz data in memory,uses the Singleton design pattern,prevents repeated database calls,clears automatically after create/delete operations
+When the client calls GET /api/quizzes
+The system:
+First checks if quizzes are already stored in QuizCache
+If data exists → it returns quizzes from cache
+If not → it loads quizzes from the database
+Then it saves them into cache
+Next requests will use cached data
+
+When a quiz is:Created or Deleted
+The cache is cleared to keep data consistent
+Singleton Pattern Usage: QuizCache class implements Singleton 
+This ensures:
+Only one cache object exists
+All services share the same cache
+Memory usage is controlled
+
+improves:
+Application performance
+Response speed
+Scalability
+Reduces database calls
+
